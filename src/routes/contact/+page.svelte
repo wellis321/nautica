@@ -32,8 +32,8 @@
 				<div>
 					<dt class="font-medium text-navy-950">Email</dt>
 					<dd>
-						<a href="mailto:info@nauticaresoulitions.co.uk" class="hover:text-brass-600">
-							info@nauticaresoulitions.co.uk
+						<a href="mailto:info@nauticaresolutions.co.uk" class="hover:text-brass-600">
+							info@nauticaresolutions.co.uk
 						</a>
 					</dd>
 				</div>

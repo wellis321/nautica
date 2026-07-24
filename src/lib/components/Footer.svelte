@@ -29,8 +29,8 @@
 				<p class="font-display text-sm tracking-[0.2em] text-brass-400 uppercase">Contact</p>
 				<ul class="mt-4 space-y-2 text-sm">
 					<li>
-						<a href="mailto:info@nauticaresoulitions.co.uk" class="hover:text-brass-400">
-							info@nauticaresoulitions.co.uk
+						<a href="mailto:info@nauticaresolutions.co.uk" class="hover:text-brass-400">
+							info@nauticaresolutions.co.uk
 						</a>
 					</li>
 					<li>United Kingdom</li>
