@@ -7,7 +7,7 @@
 		<div class="grid gap-10 md:grid-cols-3">
 			<div>
 				<p class="font-display text-lg text-white">
-					Nautica <span class="text-brass-400">Resolutions</span>
+					Nauticare <span class="text-brass-400">Solutions</span>
 				</p>
 				<p class="mt-3 max-w-xs text-sm leading-relaxed">
 					Marine surface repair and restoration specialists — hard surfaces, French polishing,
@@ -41,7 +41,7 @@
 		<div
 			class="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"
 		>
-			<p>&copy; {year} Nautica Resolutions. All rights reserved.</p>
+			<p>&copy; {year} Nauticare Solutions. All rights reserved.</p>
 			<p>Site content is placeholder pending final copy and photography.</p>
 		</div>
 	</div>

@@ -6,7 +6,7 @@
 </script>
 
 <svelte:head>
-	<title>Services — Nautica Resolutions</title>
+	<title>Services — Nauticare Solutions</title>
 	<meta
 		name="description"
 		content="Hard surface repairs, French polishing, decorating, IMO-certified PPF filming, glass polishing, and marble & stone restoration for marine vessels."

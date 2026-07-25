@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Nautica Resolutions — Marine Surface Repair &amp; Restoration</title>
+	<title>Nauticare Solutions — Marine Surface Repair &amp; Restoration</title>
 	<meta
 		name="description"
 		content="High-end marine surface repair and restoration: hard surface repairs, French polishing, decorating, PPF filming, glass polishing, marble and stone restoration."
@@ -125,7 +125,7 @@
 			Now taking enquiries direct from owners and operators
 		</h2>
 		<p class="mx-auto mt-4 max-w-xl text-navy-800/70">
-			After years working the world's leading fleets, Nautica Resolutions is opening its books to
+			After years working the world's leading fleets, Nauticare Solutions is opening its books to
 			private and commercial vessel owners.
 		</p>
 		<a

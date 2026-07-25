@@ -5,10 +5,10 @@
 </script>
 
 <svelte:head>
-	<title>About — Nautica Resolutions</title>
+	<title>About — Nauticare Solutions</title>
 	<meta
 		name="description"
-		content="Nautica Resolutions: marine surface repair specialists with a track record aboard the world's leading cruise and luxury fleets."
+		content="Nauticare Solutions: marine surface repair specialists with a track record aboard the world's leading cruise and luxury fleets."
 	/>
 </svelte:head>
 
@@ -28,13 +28,13 @@
 			<h2 class="font-display mt-4 text-3xl text-navy-950">Placeholder — company history</h2>
 			<div class="mt-4 space-y-4 leading-relaxed text-navy-800/70">
 				<p>
-					Nautica Resolutions brings together specialist trades — hard surface repair, French
+					Nauticare Solutions brings together specialist trades — hard surface repair, French
 					polishing, decorating, PPF filming, glass polishing, and marble and stone restoration —
 					honed over years working aboard some of the world's leading cruise and luxury vessels.
 				</p>
 				<p>
 					Placeholder copy: this section should be replaced with the founder's own account of how
-					the business started, the team's background, and what sets Nautica Resolutions apart.
+					the business started, the team's background, and what sets Nauticare Solutions apart.
 				</p>
 			</div>
 		</div>

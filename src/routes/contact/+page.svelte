@@ -8,8 +8,8 @@
 </script>
 
 <svelte:head>
-	<title>Contact — Nautica Resolutions</title>
-	<meta name="description" content="Get in touch with Nautica Resolutions for marine surface repair and restoration enquiries." />
+	<title>Contact — Nauticare Solutions</title>
+	<meta name="description" content="Get in touch with Nauticare Solutions for marine surface repair and restoration enquiries." />
 </svelte:head>
 
 <section class="bg-navy-950 py-24 text-white">

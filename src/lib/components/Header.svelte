@@ -19,7 +19,7 @@
 <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy-950/90 backdrop-blur">
 	<div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
 		<a href="/" class="font-display text-lg tracking-wide text-white">
-			Nautica <span class="text-brass-400">Resolutions</span>
+			Nauticare <span class="text-brass-400">Solutions</span>
 		</a>
 
 		<nav class="hidden items-center gap-8 md:flex">

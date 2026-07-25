@@ -5,8 +5,8 @@
 </script>
 
 <svelte:head>
-	<title>Gallery — Nautica Resolutions</title>
-	<meta name="description" content="Before and after marine repair work, and craftsmanship detail shots from Nautica Resolutions." />
+	<title>Gallery — Nauticare Solutions</title>
+	<meta name="description" content="Before and after marine repair work, and craftsmanship detail shots from Nauticare Solutions." />
 </svelte:head>
 
 <section class="bg-navy-950 py-24 text-white">
