@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { ActionData } from './$types';
 
 	let { form }: { form: ActionData } = $props();
@@ -19,7 +20,13 @@
 		<form
 			method="POST"
 			class="mt-8 space-y-5"
-			onsubmit={() => (submitting = true)}
+			use:enhance={() => {
+				submitting = true;
+				return async ({ update }) => {
+					submitting = false;
+					await update();
+				};
+			}}
 		>
 			{#if form?.error}
 				<p class="border border-red-400/40 bg-red-950/40 px-4 py-3 text-sm text-red-200">
