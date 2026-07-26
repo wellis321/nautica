@@ -32,7 +32,8 @@ export const services: Service[] = [
 		summary: 'Refined paint and finishing work for cabins and public spaces.',
 		description:
 			'Full decorating services for cabins, corridors and public areas, carried out to the exacting finish standards expected on luxury and cruise vessels. Placeholder copy — final wording to be supplied by Nauticare Solutions.',
-		icon: 'decorate'
+		icon: 'decorate',
+		image: '/images/services/decorating.jpg'
 	},
 	{
 		slug: 'ppf-filming',
@@ -48,7 +49,8 @@ export const services: Service[] = [
 		summary: 'Scratch and haze removal that restores true clarity.',
 		description:
 			'We remove scratches, haze and etching from glass balustrades, screens and windows, restoring full clarity without the need for replacement panels. Placeholder copy — final wording to be supplied by Nauticare Solutions.',
-		icon: 'glass'
+		icon: 'glass',
+		image: '/images/services/glass-polishing.jpg'
 	},
 	{
 		slug: 'marble-stone-restoration',

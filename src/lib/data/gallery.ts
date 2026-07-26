@@ -25,10 +25,10 @@ export const beforeAfterProjects: BeforeAfter[] = [
 		after: '/images/gallery/sink-crack-after.jpg'
 	},
 	{
-		title: 'Marble console table restoration',
-		description: 'Scuffed and marked marble console top, restored to a mirror finish.',
-		before: '/images/gallery/console-marble-before.jpg',
-		after: '/images/gallery/console-marble-after.jpg'
+		title: 'Marble lobby floor restoration',
+		description: 'Dulled marble floor honed and polished back to a high gloss finish.',
+		before: '/images/gallery/floor-black-before.jpg',
+		after: '/images/gallery/floor-black-after.jpg'
 	},
 	{
 		title: 'Timber door crack repair',
@@ -37,10 +37,10 @@ export const beforeAfterProjects: BeforeAfter[] = [
 		after: '/images/gallery/door-crack-after.jpg'
 	},
 	{
-		title: 'Marble lobby floor restoration',
-		description: 'Dulled marble floor honed and polished back to a high gloss finish.',
-		before: '/images/gallery/floor-black-before.jpg',
-		after: '/images/gallery/floor-black-after.jpg'
+		title: 'Marble console table restoration',
+		description: 'Scuffed and marked marble console top, restored to a mirror finish.',
+		before: '/images/gallery/console-marble-before.jpg',
+		after: '/images/gallery/console-marble-after.jpg'
 	},
 	{
 		title: 'Marble medallion floor restoration',
