@@ -118,5 +118,29 @@ export const actions: Actions = {
 		const id = Number(data.get('id'));
 		if (!id) return fail(400, { error: 'Missing shot id.' });
 		await db.delete(craftsmanshipShots).where(eq(craftsmanshipShots.id, id));
+	},
+
+	reorderProjects: async ({ request }) => {
+		const data = await request.formData();
+		const ids = data.getAll('id').map(Number);
+		if (ids.length === 0) return fail(400, { error: 'No order provided.' });
+
+		await db.transaction(async (tx) => {
+			for (let i = 0; i < ids.length; i++) {
+				await tx.update(beforeAfterProjects).set({ sortOrder: i }).where(eq(beforeAfterProjects.id, ids[i]));
+			}
+		});
+	},
+
+	reorderShots: async ({ request }) => {
+		const data = await request.formData();
+		const ids = data.getAll('id').map(Number);
+		if (ids.length === 0) return fail(400, { error: 'No order provided.' });
+
+		await db.transaction(async (tx) => {
+			for (let i = 0; i < ids.length; i++) {
+				await tx.update(craftsmanshipShots).set({ sortOrder: i }).where(eq(craftsmanshipShots.id, ids[i]));
+			}
+		});
 	}
 };

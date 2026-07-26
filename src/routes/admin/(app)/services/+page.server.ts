@@ -70,5 +70,17 @@ export const actions: Actions = {
 		const id = Number(data.get('id'));
 		if (!id) return fail(400, { error: 'Missing service id.' });
 		await db.delete(services).where(eq(services.id, id));
+	},
+
+	reorder: async ({ request }) => {
+		const data = await request.formData();
+		const ids = data.getAll('id').map(Number);
+		if (ids.length === 0) return fail(400, { error: 'No order provided.' });
+
+		await db.transaction(async (tx) => {
+			for (let i = 0; i < ids.length; i++) {
+				await tx.update(services).set({ sortOrder: i }).where(eq(services.id, ids[i]));
+			}
+		});
 	}
 };

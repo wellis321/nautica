@@ -1,11 +1,47 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { dragReorder } from '$lib/actions/dragReorder';
+	import { moveItem, persistOrder } from '$lib/reorder';
 
 	let { data, form } = $props();
 
 	let editingProjectId = $state<number | 'new' | null>(null);
 	let editingShotId = $state<number | 'new' | null>(null);
+
+	let orderedProjects = $state(data.projects);
+	let orderedShots = $state(data.shots);
+
+	$effect(() => {
+		orderedProjects = data.projects;
+	});
+	$effect(() => {
+		orderedShots = data.shots;
+	});
+
+	function handleProjectDrop(draggedId: number, targetId: number) {
+		orderedProjects = moveItem(orderedProjects, draggedId, targetId);
+		persistOrder('?/reorderProjects', orderedProjects.map((p) => p.id));
+	}
+
+	function handleShotDrop(draggedId: number, targetId: number) {
+		orderedShots = moveItem(orderedShots, draggedId, targetId);
+		persistOrder('?/reorderShots', orderedShots.map((s) => s.id));
+	}
 </script>
+
+{#snippet gripHandle()}
+	<span
+		class="mt-1 shrink-0 cursor-grab text-navy-800/30 select-none active:cursor-grabbing"
+		title="Drag to reorder"
+		aria-hidden="true"
+	>
+		<svg width="12" height="20" viewBox="0 0 12 20" fill="currentColor">
+			<circle cx="3" cy="3" r="1.5" /><circle cx="9" cy="3" r="1.5" />
+			<circle cx="3" cy="10" r="1.5" /><circle cx="9" cy="10" r="1.5" />
+			<circle cx="3" cy="17" r="1.5" /><circle cx="9" cy="17" r="1.5" />
+		</svg>
+	</span>
+{/snippet}
 
 <svelte:head>
 	<title>Gallery — Admin</title>
@@ -88,11 +124,16 @@
 		</form>
 	{/if}
 
-	<div class="mt-6 space-y-4">
-		{#each data.projects as project (project.id)}
-			<div class="border border-navy-900/10 bg-white p-6">
+	<p class="mt-6 text-xs text-navy-800/50">Drag items by the handle to reorder.</p>
+	<div class="mt-2 space-y-4">
+		{#each orderedProjects as project (project.id)}
+			<div
+				use:dragReorder={{ id: project.id, onDrop: handleProjectDrop }}
+				class="border border-navy-900/10 bg-white p-6 transition-shadow"
+			>
 				<div class="flex items-start justify-between gap-4">
 					<div class="flex items-start gap-3">
+						{@render gripHandle()}
 						<img src={project.before} alt="{project.title} before" class="h-16 w-16 object-cover" />
 						<img src={project.after} alt="{project.title} after" class="h-16 w-16 object-cover" />
 						<div>
@@ -259,10 +300,17 @@
 		</form>
 	{/if}
 
-	<div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-		{#each data.shots as shot (shot.id)}
-			<div class="border border-navy-900/10 bg-white p-4">
-				<img src={shot.image} alt={shot.title} class="aspect-4/3 w-full object-cover" />
+	<p class="mt-6 text-xs text-navy-800/50">Drag items by the handle to reorder.</p>
+	<div class="mt-2 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+		{#each orderedShots as shot (shot.id)}
+			<div
+				use:dragReorder={{ id: shot.id, onDrop: handleShotDrop }}
+				class="border border-navy-900/10 bg-white p-4 transition-shadow"
+			>
+				<div class="flex items-center justify-between">
+					{@render gripHandle()}
+				</div>
+				<img src={shot.image} alt={shot.title} class="mt-2 aspect-4/3 w-full object-cover" />
 				<p class="mt-3 font-display text-navy-950">{shot.title}</p>
 				<p class="mt-1 text-sm text-navy-800/60">{shot.description}</p>
 				<div class="mt-3 flex gap-2">

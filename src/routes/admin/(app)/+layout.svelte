@@ -36,6 +36,18 @@
 				{/each}
 			</nav>
 			<div class="flex items-center gap-4">
+				<a
+					href="/"
+					target="_blank"
+					rel="noopener"
+					class="flex items-center gap-1.5 border border-white/20 px-3 py-1.5 text-xs tracking-wide text-white/70 transition-colors hover:border-brass-400 hover:text-brass-400"
+				>
+					<span class="hidden sm:inline">View Site</span>
+					<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+						<path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6" stroke-linecap="round" stroke-linejoin="round" />
+						<path d="M15 3h6v6M10 14L21 3" stroke-linecap="round" stroke-linejoin="round" />
+					</svg>
+				</a>
 				<span class="hidden text-sm text-white/50 sm:inline">{data.user?.name}</span>
 				<form method="POST" action="/admin/logout">
 					<button

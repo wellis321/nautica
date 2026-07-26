@@ -1,9 +1,21 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { dragReorder } from '$lib/actions/dragReorder';
+	import { moveItem, persistOrder } from '$lib/reorder';
 
 	let { data, form } = $props();
 
 	let editingId = $state<number | 'new' | null>(null);
+	let orderedServices = $state(data.services);
+
+	$effect(() => {
+		orderedServices = data.services;
+	});
+
+	function handleReorderDrop(draggedId: number, targetId: number) {
+		orderedServices = moveItem(orderedServices, draggedId, targetId);
+		persistOrder('?/reorder', orderedServices.map((s) => s.id));
+	}
 
 	const icons = ['surface', 'polish', 'decorate', 'film', 'glass', 'stone'];
 </script>
@@ -89,11 +101,26 @@
 	</form>
 {/if}
 
-<div class="mt-8 space-y-4">
-	{#each data.services as service (service.id)}
-		<div class="border border-navy-900/10 bg-white p-6">
+<p class="mt-8 text-xs text-navy-800/50">Drag items by the handle to reorder.</p>
+<div class="mt-2 space-y-4">
+	{#each orderedServices as service (service.id)}
+		<div
+			use:dragReorder={{ id: service.id, onDrop: handleReorderDrop }}
+			class="border border-navy-900/10 bg-white p-6 transition-shadow"
+		>
 			<div class="flex items-start justify-between gap-4">
 				<div class="flex items-start gap-4">
+					<span
+						class="mt-1 shrink-0 cursor-grab text-navy-800/30 select-none active:cursor-grabbing"
+						title="Drag to reorder"
+						aria-hidden="true"
+					>
+						<svg width="12" height="20" viewBox="0 0 12 20" fill="currentColor">
+							<circle cx="3" cy="3" r="1.5" /><circle cx="9" cy="3" r="1.5" />
+							<circle cx="3" cy="10" r="1.5" /><circle cx="9" cy="10" r="1.5" />
+							<circle cx="3" cy="17" r="1.5" /><circle cx="9" cy="17" r="1.5" />
+						</svg>
+					</span>
 					{#if service.image}
 						<img src={service.image} alt={service.title} class="h-16 w-16 object-cover" />
 					{:else}
