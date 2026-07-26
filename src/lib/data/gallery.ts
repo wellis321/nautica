@@ -13,10 +13,10 @@ export const beforeAfterProjects: BeforeAfter[] = [
 		after: '/images/gallery/countertop-chip-after.jpg'
 	},
 	{
-		title: 'Marble corner crack repair',
-		description: 'Hairline crack to a bathroom marble corner, restored and re-polished.',
-		before: '/images/gallery/marble-crack-before.jpg',
-		after: '/images/gallery/marble-crack-after.jpg'
+		title: 'Marble lobby floor restoration',
+		description: 'Dulled marble floor honed and polished back to a high gloss finish.',
+		before: '/images/gallery/floor-black-before.jpg',
+		after: '/images/gallery/floor-black-after.jpg'
 	},
 	{
 		title: 'Wash basin crack repair',
@@ -25,10 +25,10 @@ export const beforeAfterProjects: BeforeAfter[] = [
 		after: '/images/gallery/sink-crack-after.jpg'
 	},
 	{
-		title: 'Marble lobby floor restoration',
-		description: 'Dulled marble floor honed and polished back to a high gloss finish.',
-		before: '/images/gallery/floor-black-before.jpg',
-		after: '/images/gallery/floor-black-after.jpg'
+		title: 'Marble corner crack repair',
+		description: 'Hairline crack to a bathroom marble corner, restored and re-polished.',
+		before: '/images/gallery/marble-crack-before.jpg',
+		after: '/images/gallery/marble-crack-after.jpg'
 	},
 	{
 		title: 'Timber door crack repair',
