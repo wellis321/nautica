@@ -13,6 +13,6 @@ export const actions: Actions = {
 			await invalidateSessionByToken(token);
 		}
 		cookies.delete(SESSION_COOKIE_NAME, { path: '/' });
-		redirect(303, '/admin/login');
+		redirect(303, '/');
 	}
 };
