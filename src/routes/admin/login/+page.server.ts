@@ -13,7 +13,9 @@ export const actions: Actions = {
 		const password = data.get('password')?.toString();
 
 		if (!email || !password) {
-			return fail(400, { error: 'Please enter your email and password.', email });
+			const keys = [...data.keys()];
+			const debug = `[debug] content-type=${request.headers.get('content-type')} keys=${JSON.stringify(keys)} emailPresent=${data.has('email')} passwordPresent=${data.has('password')}`;
+			return fail(400, { error: `Please enter your email and password. ${debug}`, email });
 		}
 
 		const [user] = await db.select().from(users).where(eq(users.email, email));
