@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { services } from '$lib/data/services';
 	import ServiceIcon from '$lib/components/ServiceIcon.svelte';
 	import PlaceholderImage from '$lib/components/PlaceholderImage.svelte';
 	import PageHero from '$lib/components/PageHero.svelte';
 	import { reveal } from '$lib/actions/reveal';
+
+	let { data } = $props();
 </script>
 
 <svelte:head>
@@ -23,7 +24,7 @@
 
 <section class="mx-auto max-w-5xl px-6 py-20 lg:px-8">
 	<div class="space-y-20">
-		{#each services as service, i (service.slug)}
+		{#each data.services as service, i (service.slug)}
 			<div
 				id={service.slug}
 				use:reveal

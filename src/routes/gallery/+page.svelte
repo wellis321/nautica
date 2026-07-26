@@ -1,16 +1,15 @@
 <script lang="ts">
 	import BeforeAfterSlider from '$lib/components/BeforeAfterSlider.svelte';
 	import PageHero from '$lib/components/PageHero.svelte';
-	import { beforeAfterProjects, craftsmanshipShots } from '$lib/data/gallery';
 	import { reveal } from '$lib/actions/reveal';
+
+	let { data } = $props();
 
 	// Keep the grid from ending on a lone single-item row: if the count is
 	// odd, break the final three into a 3-up row instead of 2-up + 1.
-	const oddTail = beforeAfterProjects.length % 2 === 1 && beforeAfterProjects.length >= 3;
-	const mainProjects = oddTail
-		? beforeAfterProjects.slice(0, -3)
-		: beforeAfterProjects;
-	const tailProjects = oddTail ? beforeAfterProjects.slice(-3) : [];
+	const oddTail = $derived(data.projects.length % 2 === 1 && data.projects.length >= 3);
+	const mainProjects = $derived(oddTail ? data.projects.slice(0, -3) : data.projects);
+	const tailProjects = $derived(oddTail ? data.projects.slice(-3) : []);
 </script>
 
 <svelte:head>
@@ -27,7 +26,7 @@
 
 <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8">
 	<div class="grid gap-10 md:grid-cols-2">
-		{#each mainProjects as project, i (project.title)}
+		{#each mainProjects as project, i (project.id)}
 			<div use:reveal={i * 100} data-reveal>
 				<BeforeAfterSlider before={project.before} after={project.after} alt={project.title} />
 				<h3 class="font-display mt-4 text-lg text-navy-950">{project.title}</h3>
@@ -38,7 +37,7 @@
 
 	{#if tailProjects.length > 0}
 		<div class="mt-10 grid gap-10 md:grid-cols-3">
-			{#each tailProjects as project, i (project.title)}
+			{#each tailProjects as project, i (project.id)}
 				<div use:reveal={i * 100} data-reveal>
 					<BeforeAfterSlider before={project.before} after={project.after} alt={project.title} />
 					<h3 class="font-display mt-4 text-lg text-navy-950">{project.title}</h3>
@@ -57,7 +56,7 @@
 		</div>
 
 		<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-			{#each craftsmanshipShots as shot, i (shot.title)}
+			{#each data.shots as shot, i (shot.id)}
 				<figure use:reveal={i * 80} data-reveal class="group overflow-hidden bg-navy-950">
 					<div class="aspect-4/3 overflow-hidden">
 						<img

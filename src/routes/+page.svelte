@@ -2,11 +2,9 @@
 	import ClientStrip from '$lib/components/ClientStrip.svelte';
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
 	import BeforeAfterSlider from '$lib/components/BeforeAfterSlider.svelte';
-	import { services } from '$lib/data/services';
-	import { beforeAfterProjects } from '$lib/data/gallery';
 	import { reveal } from '$lib/actions/reveal';
 
-	const featuredProjects = beforeAfterProjects.slice(0, 2);
+	let { data } = $props();
 </script>
 
 <svelte:head>
@@ -83,7 +81,7 @@
 	</div>
 
 	<div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-		{#each services as service, i (service.slug)}
+		{#each data.services as service, i (service.slug)}
 			<ServiceCard {service} delay={i * 60} />
 		{/each}
 	</div>
@@ -101,7 +99,7 @@
 		</div>
 
 		<div class="mt-14 grid gap-10 md:grid-cols-2">
-			{#each featuredProjects as project, i (project.title)}
+			{#each data.featuredProjects as project, i (project.id)}
 				<div use:reveal={i * 100} data-reveal>
 					<BeforeAfterSlider before={project.before} after={project.after} alt={project.title} />
 					<h3 class="font-display mt-4 text-lg">{project.title}</h3>

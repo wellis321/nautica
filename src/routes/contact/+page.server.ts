@@ -1,4 +1,6 @@
 import { fail } from '@sveltejs/kit';
+import { db } from '$lib/server/db';
+import { contactMessages } from '$lib/server/db/schema';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
@@ -12,8 +14,7 @@ export const actions: Actions = {
 			return fail(400, { error: 'Please fill in every field.', name, email, message });
 		}
 
-		// No email/SMTP provider configured yet — enquiries are logged only until one is wired up.
-		console.log('Contact enquiry received:', { name, email, message });
+		await db.insert(contactMessages).values({ name, email, message });
 
 		return { success: true };
 	}

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Service } from '$lib/data/services';
+	import type { Service } from '$lib/types';
 	import ServiceIcon from './ServiceIcon.svelte';
 	import { reveal } from '$lib/actions/reveal';
 

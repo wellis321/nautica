@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { Service } from '$lib/data/services';
-
-	let { icon, class: className = 'h-7 w-7' }: { icon: Service['icon']; class?: string } = $props();
+	let { icon, class: className = 'h-7 w-7' }: { icon: string; class?: string } = $props();
 </script>
 
 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" class={className}>
