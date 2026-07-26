@@ -17,6 +17,36 @@ export const beforeAfterProjects: BeforeAfter[] = [
 		description: 'Hairline crack to a bathroom marble corner, restored and re-polished.',
 		before: '/images/gallery/marble-crack-before.jpg',
 		after: '/images/gallery/marble-crack-after.jpg'
+	},
+	{
+		title: 'Wash basin crack repair',
+		description: 'Impact crack to a ceramic basin, repaired invisibly without replacement.',
+		before: '/images/gallery/sink-crack-before.jpg',
+		after: '/images/gallery/sink-crack-after.jpg'
+	},
+	{
+		title: 'Marble console table restoration',
+		description: 'Scuffed and marked marble console top, restored to a mirror finish.',
+		before: '/images/gallery/console-marble-before.jpg',
+		after: '/images/gallery/console-marble-after.jpg'
+	},
+	{
+		title: 'Timber door crack repair',
+		description: 'Hairline crack to a veneered cabin door, repaired and refinished invisibly.',
+		before: '/images/gallery/door-crack-before.jpg',
+		after: '/images/gallery/door-crack-after.jpg'
+	},
+	{
+		title: 'Marble lobby floor restoration',
+		description: 'Dulled marble floor honed and polished back to a high gloss finish.',
+		before: '/images/gallery/floor-black-before.jpg',
+		after: '/images/gallery/floor-black-after.jpg'
+	},
+	{
+		title: 'Marble medallion floor restoration',
+		description: 'Decorative inlaid marble floor panel, restored to full clarity and shine.',
+		before: '/images/gallery/floor-medallion-before.jpg',
+		after: '/images/gallery/floor-medallion-after.jpg'
 	}
 ];
 
@@ -41,5 +71,20 @@ export const craftsmanshipShots: DetailShot[] = [
 		title: 'Polished handrail',
 		description: 'French polished timber handrail, deck cabin.',
 		image: '/images/gallery/handrail-detail.jpg'
+	},
+	{
+		title: 'Teak deck sanding',
+		description: 'Hand-sanding teak decking back to bare wood before refinishing.',
+		image: '/images/gallery/craft-teak-sanding.jpg'
+	},
+	{
+		title: 'Joinery detail',
+		description: 'Refinished corner joint on cabin joinery.',
+		image: '/images/gallery/craft-joint-detail.jpg'
+	},
+	{
+		title: 'French polished tabletop',
+		description: 'Deep gloss finish on restored dark timber.',
+		image: '/images/gallery/craft-dark-wood-gloss.jpg'
 	}
 ];

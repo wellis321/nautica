@@ -1,11 +1,12 @@
 <script lang="ts">
-	import PlaceholderImage from '$lib/components/PlaceholderImage.svelte';
 	import ClientStrip from '$lib/components/ClientStrip.svelte';
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
 	import BeforeAfterSlider from '$lib/components/BeforeAfterSlider.svelte';
 	import { services } from '$lib/data/services';
 	import { beforeAfterProjects } from '$lib/data/gallery';
 	import { reveal } from '$lib/actions/reveal';
+
+	const featuredProjects = beforeAfterProjects.slice(0, 2);
 </script>
 
 <svelte:head>
@@ -19,12 +20,14 @@
 <!-- Hero -->
 <section class="relative flex min-h-[92vh] items-center overflow-hidden bg-navy-950">
 	<div class="absolute inset-0">
-		<PlaceholderImage
-			label="Vessel interior — hero photography"
-			variant="corner"
-			class="h-full w-full"
+		<img
+			src="/images/hero/home.jpg"
+			alt=""
+			class="h-full w-full object-cover"
+			loading="eager"
+			fetchpriority="high"
 		/>
-		<div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/60 to-navy-950/20"></div>
+		<div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40"></div>
 	</div>
 
 	<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
@@ -98,7 +101,7 @@
 		</div>
 
 		<div class="mt-14 grid gap-10 md:grid-cols-2">
-			{#each beforeAfterProjects as project, i (project.title)}
+			{#each featuredProjects as project, i (project.title)}
 				<div use:reveal={i * 100} data-reveal>
 					<BeforeAfterSlider before={project.before} after={project.after} alt={project.title} />
 					<h3 class="font-display mt-4 text-lg">{project.title}</h3>

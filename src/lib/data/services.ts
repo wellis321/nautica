@@ -4,6 +4,7 @@ export type Service = {
 	summary: string;
 	description: string;
 	icon: 'surface' | 'polish' | 'decorate' | 'film' | 'glass' | 'stone';
+	image?: string;
 };
 
 export const services: Service[] = [
@@ -13,7 +14,8 @@ export const services: Service[] = [
 		summary: 'Chips, cracks and impact damage restored invisibly, in situ.',
 		description:
 			'From galley worktops to cabin thresholds, we repair chips, scratches and impact damage in solid surface, quartz, laminate and composite materials without the cost or downtime of a full replacement. Placeholder copy — final wording to be supplied by Nauticare Solutions.',
-		icon: 'surface'
+		icon: 'surface',
+		image: '/images/services/hard-surface.jpg'
 	},
 	{
 		slug: 'french-polishing',
@@ -21,7 +23,8 @@ export const services: Service[] = [
 		summary: 'Traditional hand-finishing for fine wood joinery and handrails.',
 		description:
 			'Our French polishers restore the depth and shine of fine wood joinery, handrails and cabinetry using traditional hand techniques, matched to the vessel’s existing finish. Placeholder copy — final wording to be supplied by Nauticare Solutions.',
-		icon: 'polish'
+		icon: 'polish',
+		image: '/images/services/french-polishing.jpg'
 	},
 	{
 		slug: 'decorating',
@@ -53,6 +56,7 @@ export const services: Service[] = [
 		summary: 'Crack repair, honing and polishing for natural stone.',
 		description:
 			'Crack repair, honing and polishing for marble and natural stone surfaces in bathrooms, lobbies and public areas, bringing tired stone back to a mirror finish. Placeholder copy — final wording to be supplied by Nauticare Solutions.',
-		icon: 'stone'
+		icon: 'stone',
+		image: '/images/services/marble-stone.jpg'
 	}
 ];

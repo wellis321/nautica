@@ -1,7 +1,7 @@
 <script lang="ts">
-	import PlaceholderImage from '$lib/components/PlaceholderImage.svelte';
 	import { clients } from '$lib/data/clients';
 	import { reveal } from '$lib/actions/reveal';
+	import PageHero from '$lib/components/PageHero.svelte';
 </script>
 
 <svelte:head>
@@ -12,14 +12,11 @@
 	/>
 </svelte:head>
 
-<section class="bg-navy-950 py-24 text-white">
-	<div class="mx-auto max-w-4xl px-6 text-center lg:px-8">
-		<p use:reveal data-reveal class="text-xs tracking-[0.3em] text-brass-400 uppercase">About</p>
-		<h1 use:reveal={100} data-reveal class="font-display mt-4 text-4xl sm:text-5xl">
-			Trades proven on the world's finest fleets
-		</h1>
-	</div>
-</section>
+<PageHero
+	image="/images/hero/about.jpg"
+	eyebrow="About"
+	title="Trades proven on the world's finest fleets"
+/>
 
 <section class="mx-auto max-w-5xl px-6 py-20 lg:px-8">
 	<div class="grid items-center gap-12 md:grid-cols-2">
@@ -38,7 +35,12 @@
 				</p>
 			</div>
 		</div>
-		<PlaceholderImage label="Team / workshop photography" class="aspect-4/3 w-full" />
+		<img
+			src="/images/about/team.jpg"
+			alt="The Nauticare Solutions team at work refinishing furniture"
+			class="aspect-4/3 w-full object-cover"
+			loading="lazy"
+		/>
 	</div>
 </section>
 

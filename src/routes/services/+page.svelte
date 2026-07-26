@@ -2,6 +2,7 @@
 	import { services } from '$lib/data/services';
 	import ServiceIcon from '$lib/components/ServiceIcon.svelte';
 	import PlaceholderImage from '$lib/components/PlaceholderImage.svelte';
+	import PageHero from '$lib/components/PageHero.svelte';
 	import { reveal } from '$lib/actions/reveal';
 </script>
 
@@ -13,18 +14,12 @@
 	/>
 </svelte:head>
 
-<section class="bg-navy-950 py-24 text-white">
-	<div class="mx-auto max-w-4xl px-6 text-center lg:px-8">
-		<p use:reveal data-reveal class="text-xs tracking-[0.3em] text-brass-400 uppercase">Services</p>
-		<h1 use:reveal={100} data-reveal class="font-display mt-4 text-4xl sm:text-5xl">
-			Six trades, one exacting standard
-		</h1>
-		<p use:reveal={200} data-reveal class="mx-auto mt-5 max-w-xl text-white/70">
-			Every service below is carried out to the same finish standard demanded aboard the vessels
-			we've worked on for years.
-		</p>
-	</div>
-</section>
+<PageHero
+	image="/images/hero/services.jpg"
+	eyebrow="Services"
+	title="Six trades, one exacting standard"
+	description="Every service below is carried out to the same finish standard demanded aboard the vessels we've worked on for years."
+/>
 
 <section class="mx-auto max-w-5xl px-6 py-20 lg:px-8">
 	<div class="space-y-20">
@@ -37,7 +32,16 @@
 					? 'md:[&>*:first-child]:order-2'
 					: ''}"
 			>
-				<PlaceholderImage label="{service.title} photography" class="aspect-4/3 w-full" />
+				{#if service.image}
+					<img
+						src={service.image}
+						alt={service.title}
+						class="aspect-4/3 w-full object-cover"
+						loading="lazy"
+					/>
+				{:else}
+					<PlaceholderImage label="{service.title} photography" class="aspect-4/3 w-full" />
+				{/if}
 				<div>
 					<div class="flex h-12 w-12 items-center justify-center bg-navy-900 text-brass-400">
 						<ServiceIcon icon={service.icon} />

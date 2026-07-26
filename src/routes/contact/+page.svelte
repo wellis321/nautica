@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import { reveal } from '$lib/actions/reveal';
+	import PageHero from '$lib/components/PageHero.svelte';
 	import type { ActionData } from './$types';
 
 	let { form }: { form: ActionData } = $props();
@@ -12,17 +13,12 @@
 	<meta name="description" content="Get in touch with Nauticare Solutions for marine surface repair and restoration enquiries." />
 </svelte:head>
 
-<section class="bg-navy-950 py-24 text-white">
-	<div class="mx-auto max-w-4xl px-6 text-center lg:px-8">
-		<p use:reveal data-reveal class="text-xs tracking-[0.3em] text-brass-400 uppercase">Contact</p>
-		<h1 use:reveal={100} data-reveal class="font-display mt-4 text-4xl sm:text-5xl">
-			Let's talk about your vessel
-		</h1>
-		<p use:reveal={200} data-reveal class="mx-auto mt-5 max-w-xl text-white/70">
-			Tell us a little about the work you need and we'll come back to you as soon as we can.
-		</p>
-	</div>
-</section>
+<PageHero
+	image="/images/hero/contact.jpg"
+	eyebrow="Contact"
+	title="Let's talk about your vessel"
+	description="Tell us a little about the work you need and we'll come back to you as soon as we can."
+/>
 
 <section class="mx-auto max-w-4xl px-6 py-20 lg:px-8">
 	<div class="grid gap-12 md:grid-cols-5">

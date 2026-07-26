@@ -1,7 +1,16 @@
 <script lang="ts">
 	import BeforeAfterSlider from '$lib/components/BeforeAfterSlider.svelte';
+	import PageHero from '$lib/components/PageHero.svelte';
 	import { beforeAfterProjects, craftsmanshipShots } from '$lib/data/gallery';
 	import { reveal } from '$lib/actions/reveal';
+
+	// Keep the grid from ending on a lone single-item row: if the count is
+	// odd, break the final three into a 3-up row instead of 2-up + 1.
+	const oddTail = beforeAfterProjects.length % 2 === 1 && beforeAfterProjects.length >= 3;
+	const mainProjects = oddTail
+		? beforeAfterProjects.slice(0, -3)
+		: beforeAfterProjects;
+	const tailProjects = oddTail ? beforeAfterProjects.slice(-3) : [];
 </script>
 
 <svelte:head>
@@ -9,22 +18,16 @@
 	<meta name="description" content="Before and after marine repair work, and craftsmanship detail shots from Nauticare Solutions." />
 </svelte:head>
 
-<section class="bg-navy-950 py-24 text-white">
-	<div class="mx-auto max-w-4xl px-6 text-center lg:px-8">
-		<p use:reveal data-reveal class="text-xs tracking-[0.3em] text-brass-400 uppercase">Gallery</p>
-		<h1 use:reveal={100} data-reveal class="font-display mt-4 text-4xl sm:text-5xl">
-			Real repairs, real results
-		</h1>
-		<p use:reveal={200} data-reveal class="mx-auto mt-5 max-w-xl text-white/70">
-			Drag each slider to compare before and after. More projects will be added here as they're
-			completed.
-		</p>
-	</div>
-</section>
+<PageHero
+	image="/images/hero/gallery.jpg"
+	eyebrow="Gallery"
+	title="Real repairs, real results"
+	description="Drag each slider to compare before and after. More projects will be added here as they're completed."
+/>
 
 <section class="mx-auto max-w-6xl px-6 py-20 lg:px-8">
 	<div class="grid gap-10 md:grid-cols-2">
-		{#each beforeAfterProjects as project, i (project.title)}
+		{#each mainProjects as project, i (project.title)}
 			<div use:reveal={i * 100} data-reveal>
 				<BeforeAfterSlider before={project.before} after={project.after} alt={project.title} />
 				<h3 class="font-display mt-4 text-lg text-navy-950">{project.title}</h3>
@@ -32,6 +35,18 @@
 			</div>
 		{/each}
 	</div>
+
+	{#if tailProjects.length > 0}
+		<div class="mt-10 grid gap-10 md:grid-cols-3">
+			{#each tailProjects as project, i (project.title)}
+				<div use:reveal={i * 100} data-reveal>
+					<BeforeAfterSlider before={project.before} after={project.after} alt={project.title} />
+					<h3 class="font-display mt-4 text-lg text-navy-950">{project.title}</h3>
+					<p class="mt-1 text-sm text-navy-800/70">{project.description}</p>
+				</div>
+			{/each}
+		</div>
+	{/if}
 </section>
 
 <section class="bg-sand-100 py-20">
