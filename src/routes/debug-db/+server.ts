@@ -19,5 +19,20 @@ export const GET = async () => {
 		connectionError = e instanceof Error ? e.message : String(e);
 	}
 
-	return json({ hasUrl, urlPreview, connectionOk, connectionError });
+	let localhostOk = false;
+	let localhostError: string | null = null;
+	if (env.DATABASE_URL) {
+		try {
+			const mysql = (await import('mysql2/promise')).default;
+			const localUrl = env.DATABASE_URL.replace(/@[^/]+\//, '@localhost/');
+			const conn = await mysql.createConnection(localUrl);
+			await conn.query('SELECT 1');
+			await conn.end();
+			localhostOk = true;
+		} catch (e) {
+			localhostError = e instanceof Error ? e.message : String(e);
+		}
+	}
+
+	return json({ hasUrl, urlPreview, connectionOk, connectionError, localhostOk, localhostError });
 };
