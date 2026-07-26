@@ -42,7 +42,10 @@
 			class="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"
 		>
 			<p>&copy; {year} Nauticare Solutions. All rights reserved.</p>
-			<p>Site content is placeholder pending final copy and photography.</p>
+			<div class="flex items-center gap-4">
+				<p>Site content is placeholder pending final copy and photography.</p>
+				<a href="/admin/login" class="text-white/25 hover:text-white/50">Staff Login</a>
+			</div>
 		</div>
 	</div>
 </footer>
