@@ -33,7 +33,21 @@
 					? 'md:[&>*:first-child]:order-2'
 					: ''}"
 			>
-				{#if service.image}
+				{#if service.slug === 'ppf-filming'}
+					<div
+						class="relative flex aspect-4/3 w-full items-center justify-center overflow-hidden bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700"
+					>
+						<div class="flex flex-col items-center">
+							<img
+								src="/images/certifications/imo-brass.png"
+								alt="International Maritime Organization emblem"
+								class="h-28 w-auto md:h-36"
+								loading="lazy"
+							/>
+							<p class="mt-4 text-xs tracking-[0.3em] text-brass-400 uppercase">IMO Certified</p>
+						</div>
+					</div>
+				{:else if service.image}
 					<img
 						src={service.image}
 						alt={service.title}
