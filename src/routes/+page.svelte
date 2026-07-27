@@ -25,7 +25,10 @@
 			loading="eager"
 			fetchpriority="high"
 		/>
-		<div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/70 to-navy-950/40"></div>
+		<div
+			class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/80 to-navy-950/60"
+		></div>
+		<div class="absolute inset-0 bg-navy-950/25"></div>
 	</div>
 
 	<div class="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
