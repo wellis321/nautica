@@ -51,16 +51,12 @@
 <section class="bg-sand-100 py-20">
 	<div class="mx-auto max-w-5xl px-6 lg:px-8">
 		<div use:reveal data-reveal class="flex flex-col items-start gap-10 sm:flex-row sm:items-center">
-			<div
-				class="flex shrink-0 items-center justify-center border border-navy-900/10 bg-white p-6"
-			>
-				<img
-					src="/images/certifications/imo.png"
-					alt="International Maritime Organization emblem"
-					class="h-20 w-auto sm:h-24"
-					loading="lazy"
-				/>
-			</div>
+			<img
+				src="/images/certifications/imo.png"
+				alt="International Maritime Organization emblem"
+				class="h-24 w-auto shrink-0 sm:h-28"
+				loading="lazy"
+			/>
 			<div class="max-w-2xl">
 				<p class="text-xs tracking-[0.3em] text-brass-600 uppercase">Certification</p>
 				<h2 class="font-display mt-4 text-3xl text-navy-950">IMO Certified PPF Filming</h2>
