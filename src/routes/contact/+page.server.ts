@@ -1,6 +1,7 @@
 import { fail } from '@sveltejs/kit';
 import { db } from '$lib/server/db';
 import { contactMessages } from '$lib/server/db/schema';
+import { sendContactNotification } from '$lib/server/mail';
 import type { Actions } from './$types';
 
 export const actions: Actions = {
@@ -15,6 +16,14 @@ export const actions: Actions = {
 		}
 
 		await db.insert(contactMessages).values({ name, email, message });
+
+		try {
+			await sendContactNotification({ name, email, message });
+		} catch (e) {
+			// The enquiry is already saved and visible in the admin inbox even if the
+			// notification email fails to send, so we don't fail the form for this.
+			console.error('Failed to send contact notification email:', e);
+		}
 
 		return { success: true };
 	}
