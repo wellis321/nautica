@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { dragReorder } from '$lib/actions/dragReorder';
 	import { moveItem, persistOrder } from '$lib/reorder';
+	import ImagePicker from '$lib/components/ImagePicker.svelte';
 
 	let { data, form } = $props();
 
@@ -75,26 +76,15 @@
 				class="mt-1 block w-full border-navy-900/20"
 			></textarea>
 		</div>
-		<div class="grid gap-4 sm:grid-cols-2">
-			<div>
-				<label class="block text-sm font-medium text-navy-950" for="new-icon">Icon</label>
-				<select id="new-icon" name="icon" required class="mt-1 block w-full border-navy-900/20">
-					{#each icons as icon (icon)}
-						<option value={icon}>{icon}</option>
-					{/each}
-				</select>
-			</div>
-			<div>
-				<label class="block text-sm font-medium text-navy-950" for="new-image">Image</label>
-				<input
-					id="new-image"
-					name="image"
-					type="file"
-					accept="image/jpeg,image/png,image/webp"
-					class="mt-1 block w-full text-sm"
-				/>
-			</div>
+		<div>
+			<label class="block text-sm font-medium text-navy-950" for="new-icon">Icon</label>
+			<select id="new-icon" name="icon" required class="mt-1 block w-full border-navy-900/20">
+				{#each icons as icon (icon)}
+					<option value={icon}>{icon}</option>
+				{/each}
+			</select>
 		</div>
+		<ImagePicker name="image" label="Image" library={data.imageLibrary} />
 		<button type="submit" class="bg-brass-500 px-6 py-2 text-sm text-navy-950 hover:bg-brass-400">
 			Create Service
 		</button>
@@ -216,33 +206,25 @@
 							class="mt-1 block w-full border-navy-900/20">{service.description}</textarea
 						>
 					</div>
-					<div class="grid gap-4 sm:grid-cols-2">
-						<div>
-							<label class="block text-sm font-medium text-navy-950" for="icon-{service.id}">Icon</label>
-							<select
-								id="icon-{service.id}"
-								name="icon"
-								required
-								class="mt-1 block w-full border-navy-900/20"
-							>
-								{#each icons as icon (icon)}
-									<option value={icon} selected={icon === service.icon}>{icon}</option>
-								{/each}
-							</select>
-						</div>
-						<div>
-							<label class="block text-sm font-medium text-navy-950" for="image-{service.id}">
-								Replace Image
-							</label>
-							<input
-								id="image-{service.id}"
-								name="image"
-								type="file"
-								accept="image/jpeg,image/png,image/webp"
-								class="mt-1 block w-full text-sm"
-							/>
-						</div>
+					<div>
+						<label class="block text-sm font-medium text-navy-950" for="icon-{service.id}">Icon</label>
+						<select
+							id="icon-{service.id}"
+							name="icon"
+							required
+							class="mt-1 block w-full border-navy-900/20 sm:max-w-xs"
+						>
+							{#each icons as icon (icon)}
+								<option value={icon} selected={icon === service.icon}>{icon}</option>
+							{/each}
+						</select>
 					</div>
+					<ImagePicker
+						name="image"
+						label="Image"
+						currentImage={service.image}
+						library={data.imageLibrary}
+					/>
 					<button type="submit" class="bg-brass-500 px-6 py-2 text-sm text-navy-950 hover:bg-brass-400">
 						Save Changes
 					</button>

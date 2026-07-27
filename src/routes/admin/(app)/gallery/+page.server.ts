@@ -3,15 +3,27 @@ import { asc, eq, sql } from 'drizzle-orm';
 import { db } from '$lib/server/db';
 import { beforeAfterProjects, craftsmanshipShots } from '$lib/server/db/schema';
 import { saveUploadedImage } from '$lib/server/media';
+import { getImageLibrary } from '$lib/server/mediaLibrary';
 import type { Actions, PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-	const [projects, shots] = await Promise.all([
+	const [projects, shots, library] = await Promise.all([
 		db.select().from(beforeAfterProjects).orderBy(asc(beforeAfterProjects.sortOrder)),
-		db.select().from(craftsmanshipShots).orderBy(asc(craftsmanshipShots.sortOrder))
+		db.select().from(craftsmanshipShots).orderBy(asc(craftsmanshipShots.sortOrder)),
+		getImageLibrary()
 	]);
-	return { projects, shots };
+	return { projects, shots, imageLibrary: library };
 };
+
+async function resolveImage(data: FormData, fieldName: string): Promise<string | undefined> {
+	const file = data.get(fieldName) as File | null;
+	if (file && file.size > 0) {
+		return saveUploadedImage(file);
+	}
+	const existing = data.get(`${fieldName}_existing`)?.toString();
+	if (existing) return existing;
+	return undefined;
+}
 
 export const actions: Actions = {
 	saveProject: async ({ request }) => {
@@ -20,8 +32,6 @@ export const actions: Actions = {
 		const title = data.get('title')?.toString().trim();
 		const description = data.get('description')?.toString().trim();
 		const featured = data.get('featured') === 'on';
-		const beforeFile = data.get('before') as File | null;
-		const afterFile = data.get('after') as File | null;
 
 		if (!title || !description) {
 			return fail(400, { error: 'Please fill in every field.' });
@@ -30,8 +40,8 @@ export const actions: Actions = {
 		let before: string | undefined;
 		let after: string | undefined;
 		try {
-			if (beforeFile && beforeFile.size > 0) before = await saveUploadedImage(beforeFile);
-			if (afterFile && afterFile.size > 0) after = await saveUploadedImage(afterFile);
+			before = await resolveImage(data, 'before');
+			after = await resolveImage(data, 'after');
 		} catch (e) {
 			return fail(400, { error: e instanceof Error ? e.message : 'Image upload failed.' });
 		}
@@ -78,7 +88,6 @@ export const actions: Actions = {
 		const id = data.get('id')?.toString();
 		const title = data.get('title')?.toString().trim();
 		const description = data.get('description')?.toString().trim();
-		const imageFile = data.get('image') as File | null;
 
 		if (!title || !description) {
 			return fail(400, { error: 'Please fill in every field.' });
@@ -86,7 +95,7 @@ export const actions: Actions = {
 
 		let image: string | undefined;
 		try {
-			if (imageFile && imageFile.size > 0) image = await saveUploadedImage(imageFile);
+			image = await resolveImage(data, 'image');
 		} catch (e) {
 			return fail(400, { error: e instanceof Error ? e.message : 'Image upload failed.' });
 		}

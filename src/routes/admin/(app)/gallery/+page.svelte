@@ -2,6 +2,7 @@
 	import { enhance } from '$app/forms';
 	import { dragReorder } from '$lib/actions/dragReorder';
 	import { moveItem, persistOrder } from '$lib/reorder';
+	import ImagePicker from '$lib/components/ImagePicker.svelte';
 
 	let { data, form } = $props();
 
@@ -91,28 +92,8 @@
 				/>
 			</div>
 			<div class="grid gap-4 sm:grid-cols-2">
-				<div>
-					<label class="block text-sm font-medium text-navy-950" for="new-p-before">Before image</label>
-					<input
-						id="new-p-before"
-						name="before"
-						type="file"
-						required
-						accept="image/jpeg,image/png,image/webp"
-						class="mt-1 block w-full text-sm"
-					/>
-				</div>
-				<div>
-					<label class="block text-sm font-medium text-navy-950" for="new-p-after">After image</label>
-					<input
-						id="new-p-after"
-						name="after"
-						type="file"
-						required
-						accept="image/jpeg,image/png,image/webp"
-						class="mt-1 block w-full text-sm"
-					/>
-				</div>
+				<ImagePicker name="before" label="Before image" library={data.imageLibrary} />
+				<ImagePicker name="after" label="After image" library={data.imageLibrary} />
 			</div>
 			<label class="flex items-center gap-2 text-sm text-navy-950">
 				<input type="checkbox" name="featured" class="border-navy-900/20" />
@@ -207,30 +188,18 @@
 							/>
 						</div>
 						<div class="grid gap-4 sm:grid-cols-2">
-							<div>
-								<label class="block text-sm font-medium text-navy-950" for="before-{project.id}">
-									Replace before image
-								</label>
-								<input
-									id="before-{project.id}"
-									name="before"
-									type="file"
-									accept="image/jpeg,image/png,image/webp"
-									class="mt-1 block w-full text-sm"
-								/>
-							</div>
-							<div>
-								<label class="block text-sm font-medium text-navy-950" for="after-{project.id}">
-									Replace after image
-								</label>
-								<input
-									id="after-{project.id}"
-									name="after"
-									type="file"
-									accept="image/jpeg,image/png,image/webp"
-									class="mt-1 block w-full text-sm"
-								/>
-							</div>
+							<ImagePicker
+								name="before"
+								label="Before image"
+								currentImage={project.before}
+								library={data.imageLibrary}
+							/>
+							<ImagePicker
+								name="after"
+								label="After image"
+								currentImage={project.after}
+								library={data.imageLibrary}
+							/>
 						</div>
 						<label class="flex items-center gap-2 text-sm text-navy-950">
 							<input type="checkbox" name="featured" checked={project.featured} class="border-navy-900/20" />
@@ -283,17 +252,7 @@
 					class="mt-1 block w-full border-navy-900/20"
 				/>
 			</div>
-			<div>
-				<label class="block text-sm font-medium text-navy-950" for="new-s-image">Image</label>
-				<input
-					id="new-s-image"
-					name="image"
-					type="file"
-					required
-					accept="image/jpeg,image/png,image/webp"
-					class="mt-1 block w-full text-sm"
-				/>
-			</div>
+			<ImagePicker name="image" label="Image" library={data.imageLibrary} />
 			<button type="submit" class="bg-brass-500 px-6 py-2 text-sm text-navy-950 hover:bg-brass-400">
 				Create Shot
 			</button>
@@ -357,12 +316,7 @@
 							value={shot.description}
 							class="block w-full border-navy-900/20 text-sm"
 						/>
-						<input
-							name="image"
-							type="file"
-							accept="image/jpeg,image/png,image/webp"
-							class="block w-full text-xs"
-						/>
+						<ImagePicker name="image" label="Image" currentImage={shot.image} library={data.imageLibrary} />
 						<button type="submit" class="bg-brass-500 px-4 py-1.5 text-xs text-navy-950 hover:bg-brass-400">
 							Save
 						</button>

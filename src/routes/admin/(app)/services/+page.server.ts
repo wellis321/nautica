@@ -3,14 +3,28 @@ import { asc, eq, sql } from 'drizzle-orm';
 import { db } from '$lib/server/db';
 import { services } from '$lib/server/db/schema';
 import { saveUploadedImage } from '$lib/server/media';
+import { getImageLibrary } from '$lib/server/mediaLibrary';
 import type { Actions, PageServerLoad } from './$types';
 
 const ICONS = ['surface', 'polish', 'decorate', 'film', 'glass', 'stone'] as const;
 
 export const load: PageServerLoad = async () => {
-	const all = await db.select().from(services).orderBy(asc(services.sortOrder));
-	return { services: all };
+	const [all, library] = await Promise.all([
+		db.select().from(services).orderBy(asc(services.sortOrder)),
+		getImageLibrary()
+	]);
+	return { services: all, imageLibrary: library };
 };
+
+async function resolveImage(data: FormData, fieldName: string): Promise<string | undefined> {
+	const file = data.get(fieldName) as File | null;
+	if (file && file.size > 0) {
+		return saveUploadedImage(file);
+	}
+	const existing = data.get(`${fieldName}_existing`)?.toString();
+	if (existing) return existing;
+	return undefined;
+}
 
 export const actions: Actions = {
 	save: async ({ request }) => {
@@ -21,19 +35,16 @@ export const actions: Actions = {
 		const summary = data.get('summary')?.toString().trim();
 		const description = data.get('description')?.toString().trim();
 		const icon = data.get('icon')?.toString();
-		const imageFile = data.get('image') as File | null;
 
 		if (!slug || !title || !summary || !description || !icon || !ICONS.includes(icon as any)) {
 			return fail(400, { error: 'Please fill in every field with a valid icon.' });
 		}
 
 		let image: string | undefined;
-		if (imageFile && imageFile.size > 0) {
-			try {
-				image = await saveUploadedImage(imageFile);
-			} catch (e) {
-				return fail(400, { error: e instanceof Error ? e.message : 'Image upload failed.' });
-			}
+		try {
+			image = await resolveImage(data, 'image');
+		} catch (e) {
+			return fail(400, { error: e instanceof Error ? e.message : 'Image upload failed.' });
 		}
 
 		if (id) {
