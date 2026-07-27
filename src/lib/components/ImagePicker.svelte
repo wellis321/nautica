@@ -88,15 +88,15 @@
 
 			{#if showLibrary}
 				<div
-					class="grid max-h-64 grid-cols-4 gap-2 overflow-y-auto border border-navy-900/10 bg-sand-50 p-3 sm:grid-cols-6"
+					class="grid max-h-80 grid-cols-3 gap-3 overflow-y-auto border border-navy-900/10 bg-sand-50 p-3 sm:grid-cols-4"
 				>
 					{#each library as url (url)}
 						<button
 							type="button"
 							onclick={() => pickExisting(url)}
-							class="aspect-square overflow-hidden border-2 {selectedExisting === url
-								? 'border-brass-500'
-								: 'border-transparent'} hover:border-brass-400"
+							class="aspect-square overflow-hidden border-2 bg-white shadow-sm {selectedExisting === url
+								? 'border-brass-500 ring-2 ring-brass-500/40'
+								: 'border-navy-900/15 hover:border-brass-400'}"
 						>
 							<img src={url} alt="" class="h-full w-full object-cover" />
 						</button>
