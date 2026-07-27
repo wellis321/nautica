@@ -2,18 +2,18 @@
 	import ClientStrip from '$lib/components/ClientStrip.svelte';
 	import ServiceCard from '$lib/components/ServiceCard.svelte';
 	import BeforeAfterSlider from '$lib/components/BeforeAfterSlider.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { reveal } from '$lib/actions/reveal';
 
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>Nauticare Solutions — Marine Surface Repair &amp; Restoration</title>
-	<meta
-		name="description"
-		content="High-end marine surface repair and restoration: hard surface repairs, French polishing, decorating, PPF filming, glass polishing, marble and stone restoration."
-	/>
-</svelte:head>
+<Seo
+	path="/"
+	title="Nauticare Solutions — Marine Surface Repair &amp; Restoration"
+	description="High-end marine surface repair and restoration: hard surface repairs, French polishing, decorating, PPF filming, glass polishing, marble and stone restoration."
+	image="/images/hero/home.jpg"
+/>
 
 <!-- Hero -->
 <section class="relative flex min-h-[92vh] items-center overflow-hidden bg-navy-950">
@@ -73,7 +73,7 @@
 <!-- Services overview -->
 <section class="mx-auto max-w-7xl px-6 py-24 lg:px-8">
 	<div use:reveal data-reveal class="max-w-2xl">
-		<p class="text-xs tracking-[0.3em] text-brass-600 uppercase">What We Do</p>
+		<p class="text-xs tracking-[0.3em] text-brass-700 uppercase">What We Do</p>
 		<h2 class="font-display mt-4 text-3xl text-navy-950 sm:text-4xl">
 			Six trades, one exacting standard
 		</h2>

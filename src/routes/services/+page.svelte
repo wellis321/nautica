@@ -2,18 +2,18 @@
 	import ServiceIcon from '$lib/components/ServiceIcon.svelte';
 	import PlaceholderImage from '$lib/components/PlaceholderImage.svelte';
 	import PageHero from '$lib/components/PageHero.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { reveal } from '$lib/actions/reveal';
 
 	let { data } = $props();
 </script>
 
-<svelte:head>
-	<title>Services — Nauticare Solutions</title>
-	<meta
-		name="description"
-		content="Hard surface repairs, French polishing, decorating, IMO-certified PPF filming, glass polishing, and marble & stone restoration for marine vessels."
-	/>
-</svelte:head>
+<Seo
+	path="/services"
+	title="Services — Nauticare Solutions"
+	description="Hard surface repairs, French polishing, decorating, IMO-certified PPF filming, glass polishing, and marble & stone restoration for marine vessels."
+	image="/images/hero/services.jpg"
+/>
 
 <PageHero
 	image="/images/hero/services.jpg"

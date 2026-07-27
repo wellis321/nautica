@@ -20,7 +20,7 @@
 	<p class="mt-2 text-sm leading-relaxed text-navy-800/70">{service.summary}</p>
 	<a
 		href="/services#{service.slug}"
-		class="mt-4 inline-flex items-center gap-1 text-sm text-brass-600 hover:text-brass-500"
+		class="mt-4 inline-flex items-center gap-1 text-sm text-brass-700 hover:text-brass-600"
 	>
 		Learn more
 		<span aria-hidden="true" class="transition-transform group-hover:translate-x-1">&rarr;</span>

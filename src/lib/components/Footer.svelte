@@ -39,10 +39,10 @@
 		</div>
 
 		<div
-			class="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between"
+			class="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between"
 		>
 			<p>&copy; {year} Nauticare Solutions. All rights reserved.</p>
-			<a href="/admin/login" class="text-white/25 hover:text-white/50">Staff Login</a>
+			<a href="/admin/login" class="text-white/50 hover:text-white/75">Staff Login</a>
 		</div>
 	</div>
 </footer>

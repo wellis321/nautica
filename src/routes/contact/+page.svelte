@@ -2,16 +2,19 @@
 	import { enhance } from '$app/forms';
 	import { reveal } from '$lib/actions/reveal';
 	import PageHero from '$lib/components/PageHero.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import type { ActionData } from './$types';
 
 	let { form }: { form: ActionData } = $props();
 	let submitting = $state(false);
 </script>
 
-<svelte:head>
-	<title>Contact — Nauticare Solutions</title>
-	<meta name="description" content="Get in touch with Nauticare Solutions for marine surface repair and restoration enquiries." />
-</svelte:head>
+<Seo
+	path="/contact"
+	title="Contact — Nauticare Solutions"
+	description="Get in touch with Nauticare Solutions for marine surface repair and restoration enquiries."
+	image="/images/hero/contact.jpg"
+/>
 
 <PageHero
 	image="/images/hero/contact.jpg"
@@ -28,7 +31,7 @@
 				<div>
 					<dt class="font-medium text-navy-950">Email</dt>
 					<dd>
-						<a href="mailto:info@nauticaresolutions.co.uk" class="hover:text-brass-600">
+						<a href="mailto:info@nauticaresolutions.co.uk" class="hover:text-brass-700">
 							info@nauticaresolutions.co.uk
 						</a>
 					</dd>
@@ -59,7 +62,7 @@
 					class="space-y-5"
 				>
 					{#if form?.error}
-						<p class="border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
+						<p role="alert" class="border border-red-300 bg-red-50 px-4 py-3 text-sm text-red-700">
 							{form.error}
 						</p>
 					{/if}

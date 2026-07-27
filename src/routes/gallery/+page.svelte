@@ -1,6 +1,7 @@
 <script lang="ts">
 	import BeforeAfterSlider from '$lib/components/BeforeAfterSlider.svelte';
 	import PageHero from '$lib/components/PageHero.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { reveal } from '$lib/actions/reveal';
 
 	let { data } = $props();
@@ -12,10 +13,12 @@
 	const tailProjects = $derived(oddTail ? data.projects.slice(-3) : []);
 </script>
 
-<svelte:head>
-	<title>Gallery — Nauticare Solutions</title>
-	<meta name="description" content="Before and after marine repair work, and craftsmanship detail shots from Nauticare Solutions." />
-</svelte:head>
+<Seo
+	path="/gallery"
+	title="Gallery — Nauticare Solutions"
+	description="Before and after marine repair work, and craftsmanship detail shots from Nauticare Solutions."
+	image="/images/hero/gallery.jpg"
+/>
 
 <PageHero
 	image="/images/hero/gallery.jpg"
@@ -51,7 +54,7 @@
 <section class="bg-sand-100 py-20">
 	<div class="mx-auto max-w-6xl px-6 lg:px-8">
 		<div use:reveal data-reveal class="max-w-2xl">
-			<p class="text-xs tracking-[0.3em] text-brass-600 uppercase">Craftsmanship</p>
+			<p class="text-xs tracking-[0.3em] text-brass-700 uppercase">Craftsmanship</p>
 			<h2 class="font-display mt-4 text-3xl text-navy-950">Finished work, up close</h2>
 		</div>
 

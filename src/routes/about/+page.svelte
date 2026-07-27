@@ -2,15 +2,15 @@
 	import { clients } from '$lib/data/clients';
 	import { reveal } from '$lib/actions/reveal';
 	import PageHero from '$lib/components/PageHero.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 </script>
 
-<svelte:head>
-	<title>About — Nauticare Solutions</title>
-	<meta
-		name="description"
-		content="Nauticare Solutions: marine surface repair specialists with a track record aboard the world's leading cruise and luxury fleets."
-	/>
-</svelte:head>
+<Seo
+	path="/about"
+	title="About — Nauticare Solutions"
+	description="Nauticare Solutions: marine surface repair specialists with a track record aboard the world's leading cruise and luxury fleets."
+	image="/images/hero/about.jpg"
+/>
 
 <PageHero
 	image="/images/hero/about.jpg"
@@ -21,7 +21,7 @@
 <section class="mx-auto max-w-5xl px-6 py-20 lg:px-8">
 	<div class="grid items-center gap-12 md:grid-cols-2">
 		<div use:reveal data-reveal>
-			<p class="text-xs tracking-[0.3em] text-brass-600 uppercase">Our Story</p>
+			<p class="text-xs tracking-[0.3em] text-brass-700 uppercase">Our Story</p>
 			<h2 class="font-display mt-4 text-3xl text-navy-950">
 				Six decades of combined experience, one exacting standard
 			</h2>
@@ -58,7 +58,7 @@
 				loading="lazy"
 			/>
 			<div class="max-w-2xl">
-				<p class="text-xs tracking-[0.3em] text-brass-600 uppercase">Certification</p>
+				<p class="text-xs tracking-[0.3em] text-brass-700 uppercase">Certification</p>
 				<h2 class="font-display mt-4 text-3xl text-navy-950">IMO Certified PPF Filming</h2>
 				<p class="mt-4 text-navy-800/70">
 					Our paint protection film application is carried out to IMO (International Maritime
@@ -72,7 +72,7 @@
 
 <section class="mx-auto max-w-5xl px-6 py-20 lg:px-8">
 	<div use:reveal data-reveal class="max-w-2xl">
-		<p class="text-xs tracking-[0.3em] text-brass-600 uppercase">Track Record</p>
+		<p class="text-xs tracking-[0.3em] text-brass-700 uppercase">Track Record</p>
 		<h2 class="font-display mt-4 text-3xl text-navy-950">Work carried out for</h2>
 		<p class="mt-4 text-navy-800/70">
 			Our trades have been trusted aboard vessels operated by the fleets below, either directly or
