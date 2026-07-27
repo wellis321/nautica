@@ -22,7 +22,9 @@
 	<div class="grid items-center gap-12 md:grid-cols-2">
 		<div use:reveal data-reveal>
 			<p class="text-xs tracking-[0.3em] text-brass-600 uppercase">Our Story</p>
-			<h2 class="font-display mt-4 text-3xl text-navy-950">Placeholder — company history</h2>
+			<h2 class="font-display mt-4 text-3xl text-navy-950">
+				Six decades of combined experience, one exacting standard
+			</h2>
 			<div class="mt-4 space-y-4 leading-relaxed text-navy-800/70">
 				<p>
 					Nauticare Solutions brings together specialist trades — hard surface repair, French
@@ -30,8 +32,10 @@
 					honed over years working aboard some of the world's leading cruise and luxury vessels.
 				</p>
 				<p>
-					Placeholder copy: this section should be replaced with the founder's own account of how
-					the business started, the team's background, and what sets Nauticare Solutions apart.
+					Between us, our people carry over 60 years of combined experience — skills built aboard
+					Star Seeker and Princess Yachts, and refined further across prestige hotels and private
+					residences. Every technique we use is marine-proven, and every member of the team shares
+					the same instinct: to go that extra mile on every surface we touch.
 				</p>
 			</div>
 		</div>
