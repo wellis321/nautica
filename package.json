@@ -44,5 +44,9 @@
 		"bcryptjs": "^3.0.3",
 		"drizzle-orm": "^0.45.2",
 		"mysql2": "^3.23.1"
+	},
+	"overrides": {
+		"cookie": "^0.7.0",
+		"esbuild": "^0.28.1"
 	}
 }
