@@ -3,6 +3,12 @@ import { redirect } from '@sveltejs/kit';
 import { SESSION_COOKIE_NAME, validateSessionToken } from '$lib/server/auth';
 
 export const handle: Handle = async ({ event, resolve }) => {
+	if (event.url.hostname === 'www.nauticaresolutions.co.uk') {
+		const target = new URL(event.url);
+		target.hostname = 'nauticaresolutions.co.uk';
+		redirect(308, target.toString());
+	}
+
 	const token = event.cookies.get(SESSION_COOKIE_NAME);
 
 	if (token) {
